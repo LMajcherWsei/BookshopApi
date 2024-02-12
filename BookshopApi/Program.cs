@@ -27,6 +27,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
+builder.Services.AddTransient<IPublisherRepository, PublisherRepository>();
 // To One Repository
 builder.Services.AddScoped(typeof(IBookshopRepository<>), typeof(BookshopRepository<>));
 

@@ -9,7 +9,8 @@ namespace BookshopApi.Helper
         public MappingProfiles() 
         {
             CreateMap<Book, BookDTO>().ReverseMap();
-            //CreateMap<Author, AuthorDTO>().ReverseMap();
+            CreateMap<Author, AuthorDTO>().ReverseMap();
+            CreateMap<Publisher, PublisherDTO>().ReverseMap();
         }
     }
 }

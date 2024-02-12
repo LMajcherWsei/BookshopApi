@@ -17,10 +17,8 @@ namespace BookshopApi.Controllers
     {
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
-        //private readonly IBookRepository _repository;
         private readonly IBookRepository _repository;
 
-        //public BookController(ILogger<BookController> logger, IMapper mapper, IBookshopRepository<Book> repository)
         public BookController(ILogger<BookController> logger, IMapper mapper, IBookRepository repository)
         {
             _logger = logger;
@@ -102,7 +100,6 @@ namespace BookshopApi.Controllers
             if (string.IsNullOrEmpty(title))
                 return BadRequest();
 
-            //var book = await _repository.GetBookByTitleAsync(title);
             var book = await _repository.GetAsync(book => book.Title.ToLower().Contains(title.ToLower()));
             if (book == null)
                 return NotFound($"The book with id {title} not found");
@@ -166,7 +163,6 @@ namespace BookshopApi.Controllers
             if (patchDocument == null || id <= 0)
                 BadRequest();
 
-            //var existingBook = await _repository.GetBookByIdAsync(id, true);
             var existingBook = await _repository.GetAsync(book => book.Id == id, true);
 
             if (existingBook == null)
@@ -196,7 +192,6 @@ namespace BookshopApi.Controllers
             if (id <= 0)
                 return BadRequest();
 
-            //var book = await _repository.GetBookByIdAsync(id);
             var book = await _repository.GetAsync(book => book.Id == id);
             if (book == null)
                 return NotFound($"The book with id {id} not found");
@@ -205,6 +200,5 @@ namespace BookshopApi.Controllers
 
             return Ok(true);
         }
-
     }
 }

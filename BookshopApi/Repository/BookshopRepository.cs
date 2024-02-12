@@ -26,8 +26,6 @@ namespace BookshopApi.Repository
 
             else
                 return await _dbSet.Where(filter).FirstOrDefaultAsync();
-
-
         }
 
 /*        public async Task<T> GetBookByTitleAsync(Expression<Func<T, bool>> filter)
