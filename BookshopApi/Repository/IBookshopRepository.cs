@@ -4,7 +4,7 @@ namespace BookshopApi.Repository
 {
     public interface IBookshopRepository<T>
     {
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<ICollection<T>> GetAllAsync();
         //Task<T> GetBookDetailsAsync(Expression<Func<T, bool>> filter);
         Task<T> GetAsync(Expression<Func<T, bool>> filter, bool useNoTracking = false);
         //Task<T> GetBookByTitleAsync(Expression<Func<T, bool>> filter);

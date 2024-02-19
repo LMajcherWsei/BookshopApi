@@ -32,8 +32,6 @@ namespace BookshopApi.DTO
 
         public int? Pages { get; set; }
 
-        public int PublisherId { get; set; }
-
         [Required]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
@@ -45,6 +43,12 @@ namespace BookshopApi.DTO
         public DateTime? PublicationDate { get; set; }
 
         public string? Language { get; set; }
+
+        public int PublisherId { get; set; }
+        /*        
+                public int PublisherId { get; set; }
+                public string? PublisherName { get; set; } 
+        */
 
         /*
                 public virtual Publisher Publisher { get; set; }

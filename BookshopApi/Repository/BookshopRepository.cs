@@ -14,7 +14,7 @@ namespace BookshopApi.Repository
             _dbContext = dbContext;
             _dbSet = _dbContext.Set<T>();
         }
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<ICollection<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }

@@ -8,7 +8,7 @@ namespace BookshopApi.Models
         public int BookId { get; set; }
         //public byte? AuthorOrder { get; set; }
 
-        public virtual Author Author { get; set; } 
-        public virtual Book Book { get; set; }
+        public virtual Author Author { get; set; } = null!;
+        public virtual Book Book { get; set; } = null!;
     }
 }
