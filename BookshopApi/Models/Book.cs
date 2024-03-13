@@ -16,13 +16,15 @@ namespace BookshopApi.Models
 
         [Required]
         public string? Title { get; set; }
-/*        public string? Author { get; set; }*/
 
-       /* [Required]
-        public List<Author?> Authors { get; set; }*/
+        public string? Category { get; set; }
+        /*        public string? Author { get; set; }*/
+
+        /* [Required]
+         public List<Author?> Authors { get; set; }*/
 
         //public string? AuthorUrl { get; set; }
-        
+
         public string? PhotoUrl { get; set; }
 
         public string? Description { get; set; }

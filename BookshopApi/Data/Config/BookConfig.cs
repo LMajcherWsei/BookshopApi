@@ -27,6 +27,10 @@ namespace BookshopApi.Data.Config
                 .HasMaxLength(100)
                 .HasColumnName("photo_url");
 
+            builder.Property(b => b.Category)
+                .HasMaxLength(100)
+                .HasColumnName("category");
+
             builder.Property(b => b.Description)
                 .HasMaxLength(4000)
                 .HasColumnName("description");

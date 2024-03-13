@@ -113,7 +113,7 @@ namespace BookshopApi.Controllers
 
             return Ok(bookDTO);
         }
-
+        // WORKS ADDING ONLY BOOK WITHOUT RELATION WITH AUTHOR
         //[Authorize(Roles = "Admin")]
         [HttpPost("Create", Name = "CreateBook")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -172,6 +172,8 @@ namespace BookshopApi.Controllers
             //return CreatedAtRoute("GetBookById", new { id = bookDTO.Id }, bookDTO);
             return CreatedAtAction(nameof(GetBookById), new { id = bookDTO.Id }, bookDTO);
         }
+
+        //WORKS adding new(ALWAYS) publisher but WITHOUT adding author
         //TO DO Add create author 
         [HttpPost(Name = "CreateBookAP")]
         [ProducesResponseType(StatusCodes.Status201Created)]
