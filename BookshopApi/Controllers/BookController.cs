@@ -47,6 +47,22 @@ namespace BookshopApi.Controllers
             return Ok(bookDTO);
         }
 
+        [HttpGet("GetBookPreview", Name = "GetBooksPreview")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<BookPreviewDTO>>> GetBooksPreview()
+        {
+            var books = await _repository.GetAllPreviewsAsync();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            //var bookPreviewDTO = _mapper.Map<List<BookPreviewDTO>>(books);
+            var bookPreviewDTO = new BookPreviewDTO();
+
+            return Ok(books); 
+        }
+
         [HttpGet("{id:int}", Name = "GetBookById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

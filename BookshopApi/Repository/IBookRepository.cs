@@ -7,6 +7,7 @@ namespace BookshopApi.Repository
 {
     public interface IBookRepository : IBookshopRepository<Book>
     {
+        Task<List<BookPreviewDTO>> GetAllPreviewsAsync();
         Task<Book> GetBookDetailsAsync(int id);
         Task<Book> CreateBookA(int authorId, Book book);
         Task<Book> CreateBookAP(CreateBookDTO book);

@@ -18,6 +18,29 @@ namespace BookshopApi.Repository
             _dbContext = dbContext;
             _mapper = mapper;
         }
+        public async Task<List<BookPreviewDTO>> GetAllPreviewsAsync()
+        {
+            var books = await _dbContext.Books.Include(a => a.BookAuthors).ThenInclude(a => a.Author).ToListAsync();
+
+            List<BookPreviewDTO> booksPreviews = [];
+            int i = 0;
+            foreach (var book in books)
+            {
+                booksPreviews.Add(new BookPreviewDTO() 
+                {
+                    Id = book.Id,
+                    Title = book.Title,
+                    Author = $"{book.BookAuthors.First().Author.FirstName} {book.BookAuthors.First().Author.MiddleName} {book.BookAuthors.First().Author.LastName}",
+                    PhotoUrl = book.PhotoUrl,
+                    Price = book.Price
+                });
+            }
+
+            // TODO Take only values u need 
+            //BookPreviewDTO booksPreviews = new BookPreviewDTO();
+
+            return booksPreviews;
+        }
 
         public async Task<Book> GetBookDetailsAsync(int id)
         {
@@ -58,18 +81,20 @@ namespace BookshopApi.Repository
 
             return book;
         }
-        /* TO Change maybee
-       public async Task<IEnumerable<BookDTO>> GetAllAsync2()
-       {
-           var book = _dbContext
-               .Books
-               .Include(b => b.Publisher)
-               //.Include(b => b.BookAuthors)
-               .ToListAsync();
 
-           var bookDTO = _mapper.Map<List<BookDTO>>(book);
-           return bookDTO;
-       }
+
+        /* TO Change maybee
+public async Task<IEnumerable<BookDTO>> GetAllAsync2()
+{
+  var book = _dbContext
+      .Books
+      .Include(b => b.Publisher)
+      //.Include(b => b.BookAuthors)
+      .ToListAsync();
+
+  var bookDTO = _mapper.Map<List<BookDTO>>(book);
+  return bookDTO;
+}
 */
 
 
